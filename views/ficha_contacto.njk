@@ -1,0 +1,43 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="card" style="max-width: 600px; margin: 2rem auto;">
+    <h2 style="margin-bottom: 1.5rem;">Ficha del Contacto</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1.1rem;">
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Código / ID:</span>
+            <p><strong>#{{ contacto.id }}</strong></p>
+        </div>
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Nombre Completo:</span>
+            <p><strong>{{ contacto.nombre }}</strong></p>
+        </div>
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Teléfono:</span>
+            <p>📞 {{ contacto.telefono }}</p>
+        </div>
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Correo Electrónico:</span>
+            <p>✉️ {{ contacto.email }}</p>
+        </div>
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Provincia:</span>
+            <p>
+                {% if contacto.provincia %}
+                    <span class="badge">{{ contacto.provincia.nombre }}</span>
+                {% else %}
+                    <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: var(--text-muted);">Sin Provincia</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <a href="/contacto/lista" class="btn btn-secondary">Volver al Listado</a>
+        {% if user %}
+            <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Eliminar Contacto</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

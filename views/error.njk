@@ -1,0 +1,9 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="card" style="max-width: 600px; margin: 3rem auto; text-align: center;">
+    <h1 style="color: var(--accent-red); margin-bottom: 1rem;">⚠️ Ocurrió un error</h1>
+    <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem;">{{ error | default('Ha sucedido un inconveniente procesando tu solicitud.') }}</p>
+    <a href="/contacto/lista" class="btn btn-primary">Volver al inicio</a>
+</div>
+{% endblock %}

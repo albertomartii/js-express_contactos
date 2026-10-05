@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Provincia {
+  id        Int        @id @default(autoincrement())
+  nombre    String
+  contactos Contacto[]
+}
+
+model Contacto {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  telefono    String
+  email       String
+  provinciaId Int
+  provincia   Provincia @relation(fields: [provinciaId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                Int     @id @default(autoincrement())
+  email             String  @unique
+  password          String
+  roles             String  @default("[\"ROLE_USER\"]")
+  isVerified        Boolean @default(false)
+  verificationToken String?
+}

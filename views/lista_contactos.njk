@@ -1,0 +1,64 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2>{{ title }}</h2>
+        {% if user %}
+            <a href="/contacto/nuevo" class="btn btn-primary">+ Nuevo Contacto</a>
+        {% endif %}
+    </div>
+
+    <!-- Barra de búsqueda del abecedario -->
+    <div class="alphabet-bar">
+        <a href="/contacto/lista" class="{% if not letraFiltro %}active{% endif %}">Todos</a>
+        {% for letra in ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"] %}
+            <a href="/contacto/empieza/{{ letra }}" class="{% if letraFiltro == letra %}active{% endif %}">{{ letra }}</a>
+        {% endfor %}
+    </div>
+
+    {% if contactos.length > 0 %}
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Provincia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contacto in contactos %}
+                        <tr>
+                            <td>#{{ contacto.id }}</td>
+                            <td><strong>{{ contacto.nombre }}</strong></td>
+                            <td>{{ contacto.telefono }}</td>
+                            <td>{{ contacto.email }}</td>
+                            <td>
+                                {% if contacto.provincia %}
+                                    <span class="badge">{{ contacto.provincia.nombre }}</span>
+                                {% else %}
+                                    <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: var(--text-muted);">Sin Provincia</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <a href="/contacto/{{ contacto.id }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;">Ver</a>
+                                    {% if user %}
+                                        <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Borrar</a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p style="text-align: center; color: var(--text-muted); margin: 2rem 0;">No se encontraron contactos registrados.</p>
+    {% endif %}
+</div>
+{% endblock %}

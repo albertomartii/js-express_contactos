@@ -1,0 +1,39 @@
+{
+  "name": "js-express_contactos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertomartii/js-express_contactos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/albertomartii/js-express_contactos/issues"
+  },
+  "homepage": "https://github.com/albertomartii/js-express_contactos#readme",
+  "dependencies": {
+    "@prisma/client": "6.4.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "nodemailer": "^10.0.14",
+    "nunjucks": "^3.2.4",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prisma": "6.4.0"
+  }
+}
