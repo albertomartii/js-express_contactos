@@ -6,7 +6,11 @@
     <p>Aplicación web construida con Node.js, Express.js y Nunjucks.</p>
     <div style="display: flex; gap: 1rem; justify-content: center;">
         <a href="/contacto/lista" class="btn btn-primary">Ver Agenda de Contactos</a>
-        <a href="/contacto/nuevo" class="btn btn-secondary">Añadir Nuevo Contacto</a>
+        {% if not user %}
+            <a href="/register" class="btn btn-secondary">Crear una Cuenta</a>
+        {% else %}
+            <a href="/contacto/nuevo" class="btn btn-secondary">Añadir Nuevo Contacto</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

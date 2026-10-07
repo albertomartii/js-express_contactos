@@ -48,6 +48,7 @@ app.use((req, res, next) => {
 // Rutas
 app.use('/', require('./routes/indexRoutes'));
 app.use('/contacto', require('./routes/contactoRoutes'));
+app.use('/', require('./routes/authRoutes'));
 
 // Manejo de errores 404
 app.use((req, res) => {
