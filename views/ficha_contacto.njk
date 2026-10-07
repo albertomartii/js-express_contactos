@@ -31,6 +31,16 @@
                 {% endif %}
             </p>
         </div>
+        <div>
+            <span style="color: var(--text-muted); font-size: 0.9rem;">País:</span>
+            <p>
+                {% if contacto.provincia and contacto.provincia.pais %}
+                    <span class="badge" style="background: #2563eb;">{{ contacto.provincia.pais.nombre }}</span>
+                {% else %}
+                    <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: var(--text-muted);">Sin País</span>
+                {% endif %}
+            </p>
+        </div>
     </div>
 
     <div style="margin-top: 2rem; display: flex; gap: 1rem;">

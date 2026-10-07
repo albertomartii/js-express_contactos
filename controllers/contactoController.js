@@ -67,7 +67,13 @@ const getFicha = async (req, res) => {
         const codigo = parseInt(req.params.codigo);
         const contacto = await prisma.contacto.findUnique({
             where: { id: codigo },
-            include: { provincia: true }
+            include: {
+                provincia: {
+                    include: {
+                        pais: true
+                    }
+                }
+            }
         });
 
         if (!contacto) {
@@ -88,7 +94,7 @@ const getFicha = async (req, res) => {
 const getNuevoParametros = async (req, res) => {
     try {
         const { nombre, telefono, email } = req.params;
-        
+
         let provincia = await prisma.provincia.findFirst();
         if (!provincia) {
             provincia = await prisma.provincia.create({
