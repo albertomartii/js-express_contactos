@@ -35,9 +35,7 @@
 
     <div style="margin-top: 2rem; display: flex; gap: 1rem;">
         <a href="/contacto/lista" class="btn btn-secondary">Volver al Listado</a>
-        {% if user %}
-            <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Eliminar Contacto</a>
-        {% endif %}
+        <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Eliminar Contacto</a>
     </div>
 </div>
 {% endblock %}

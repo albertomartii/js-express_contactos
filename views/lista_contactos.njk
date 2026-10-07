@@ -4,9 +4,7 @@
 <div class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
         <h2>{{ title }}</h2>
-        {% if user %}
-            <a href="/contacto/nuevo" class="btn btn-primary">+ Nuevo Contacto</a>
-        {% endif %}
+        <a href="/contacto/nuevo" class="btn btn-primary">+ Nuevo Contacto</a>
     </div>
 
     <!-- Barra de búsqueda del abecedario -->
@@ -47,9 +45,7 @@
                             <td>
                                 <div style="display: flex; gap: 0.5rem;">
                                     <a href="/contacto/{{ contacto.id }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;">Ver</a>
-                                    {% if user %}
-                                        <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Borrar</a>
-                                    {% endif %}
+                                    <a href="/contacto/borrar/{{ contacto.id }}" class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">Borrar</a>
                                 </div>
                             </td>
                         </tr>
